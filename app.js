@@ -4,6 +4,7 @@ var express = require('express'),
     morgan = require('morgan'),
     routes = require('./routes');
 
+
 var app = express();
 
 app.use(morgan('dev'));
@@ -29,12 +30,21 @@ swig.setDefaults({cache: false});
 
 
 
+//Routing:
+app.use("/", routes);
+
+
+
 
 app.listen(3000, function(err){
   console.log('Listening to port 3000');
 });
 
 
+
+
+
+//ERROR HANDLING MIDDLEWARE***********************************************
 // catch 404 (i.e., no route was hit) and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
@@ -46,8 +56,10 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     console.log({error: err});
-    res.render(
-        // ... fill in this part
-        //error
-    );
+    // res.render(
+    //     // ... fill in this part
+    //     //error
+    // );
+	res.send("ya fucked up...")
 });
+//ERROR HANDLING MIDDLEWARE***********************************************
