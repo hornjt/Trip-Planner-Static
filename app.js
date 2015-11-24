@@ -12,8 +12,15 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//Static Routing:
+//Static Routing (Not yet in use):
 app.use(express.static(__dirname + '/public'));
+
+
+app.use("/bootstrap", express.static(__dirname + '/node_modules/bootstrap/dist'));
+
+
+app.use("/jquery", express.static(__dirname + '/node_modules/jquery/dist'));
+
 
 
 //**************SWIG******************************
